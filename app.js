@@ -1,4 +1,4 @@
-// ================== GAME STATE ==================
+// ================= GAME STATE =================
 let gameSeq = [];
 let userSeq = [];
 let btns = ["yellow", "red", "green", "purple"];
@@ -9,16 +9,18 @@ let level = 0;
 
 let h2 = document.querySelector("h2");
 let progressBar = document.getElementById("progressBar");
+let startBtn = document.getElementById("startBtn");
 
-// ================== START GAME ==================
-document.addEventListener("keydown", () => {
+// ================= START GAME =================
+startBtn.addEventListener("click", () => {
   if (!started) {
     started = true;
+    startBtn.disabled = true;
     levelUp();
   }
 });
 
-// ================== FLASH EFFECTS ==================
+// ================= FLASH EFFECTS =================
 function gameFlash(btn) {
   btn.classList.add("flash");
   playSound(btn.id);
@@ -31,7 +33,7 @@ function userFlash(btn) {
   setTimeout(() => btn.classList.remove("userFlash"), 200);
 }
 
-// ================== LEVEL UP ==================
+// ================= LEVEL UP =================
 function levelUp() {
   userSeq = [];
   level++;
@@ -46,7 +48,7 @@ function levelUp() {
   let randColor = btns[randIdx];
   gameSeq.push(randColor);
 
-  let randBtn = document.querySelector(`#${randColor}`);
+  let randBtn = document.getElementById(randColor);
 
   setTimeout(() => {
     gameFlash(randBtn);
@@ -54,7 +56,7 @@ function levelUp() {
   }, 500);
 }
 
-// ================== CHECK ANSWER ==================
+// ================= CHECK ANSWER =================
 function checkAns(idx) {
   if (userSeq[idx] === gameSeq[idx]) {
     if (userSeq.length === gameSeq.length) {
@@ -65,7 +67,7 @@ function checkAns(idx) {
   }
 }
 
-// ================== BUTTON PRESS ==================
+// ================= BUTTON PRESS =================
 function btnPress() {
   if (!started || !acceptingInput) return;
 
@@ -78,18 +80,18 @@ function btnPress() {
   checkAns(userSeq.length - 1);
 }
 
-// ================== GAME OVER ==================
+// ================= GAME OVER =================
 function gameOver() {
   playSound("wrong");
 
   document.body.classList.add("game-over");
   setTimeout(() => document.body.classList.remove("game-over"), 600);
 
-  h2.innerHTML = `💥 Game Over! Your Score: <b>${level}</b><br>Press any key to restart`;
+  h2.innerHTML = `💥 Game Over! Score: <b>${level}</b><br>Press Start to play again`;
   reset();
 }
 
-// ================== RESET ==================
+// ================= RESET =================
 function reset() {
   started = false;
   acceptingInput = false;
@@ -97,13 +99,14 @@ function reset() {
   gameSeq = [];
   userSeq = [];
   progressBar.style.width = "0%";
+  startBtn.disabled = false;
 }
 
-// ================== EVENT LISTENERS ==================
-let allBtns = document.querySelectorAll(".btn");
-allBtns.forEach(btn => btn.addEventListener("click", btnPress));
+// ================= EVENT LISTENERS =================
+document.querySelectorAll(".btn")
+  .forEach(btn => btn.addEventListener("click", btnPress));
 
-// ================== SOUNDS ==================
+// ================= SOUNDS =================
 let sounds = {
   yellow: new Audio("https://assets.mixkit.co/sfx/preview/mixkit-bonus-earned-in-video-game-2058.mp3"),
   red: new Audio("https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3"),

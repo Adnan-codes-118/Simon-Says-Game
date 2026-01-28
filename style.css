@@ -5,55 +5,44 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  transition: background-color 0.3s ease;
 }
 
 h1 {
   color: #fff;
   margin-top: 30px;
   font-size: 3rem;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
   color: #f8f8f8;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 400;
 }
 
-.btn-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.btn {
-  height: 180px;
-  width: 180px;
-  border-radius: 20%;
-  border: 8px solid #000;
-  margin: 1rem;
+/* Start Button */
+#startBtn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  background: #00ff99;
+  color: #000;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.yellow { background-color: #f99b45; }
-.red { background-color: #d95980; }
-.green { background-color: #819ff9; }
-.purple { background-color: #63aac0; }
-
-.flash {
-  box-shadow: 0 0 30px white;
+#startBtn:hover {
   transform: scale(1.05);
+  background: #00e68a;
 }
 
-.userFlash {
-  box-shadow: 0 0 25px yellow;
-  transform: scale(0.98);
+#startBtn:disabled {
+  background: gray;
+  cursor: not-allowed;
 }
 
+/* Progress bar */
 #progressBar {
   width: 0;
   height: 10px;
@@ -63,6 +52,39 @@ h2 {
   transition: width 0.4s ease;
 }
 
+/* Buttons */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.btn {
+  height: 160px;
+  width: 160px;
+  border-radius: 20%;
+  border: 8px solid #000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.yellow { background-color: #f99b45; }
+.red    { background-color: #d95980; }
+.green  { background-color: #819ff9; }
+.purple { background-color: #63aac0; }
+
+.flash {
+  box-shadow: 0 0 30px white;
+  transform: scale(1.05);
+}
+
+.userFlash {
+  box-shadow: 0 0 25px yellow;
+  transform: scale(0.95);
+}
+
+/* Game over shake */
 body.game-over {
   animation: shake 0.3s ease-in-out 0s 2;
 }
