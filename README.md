@@ -4,7 +4,7 @@ An interactive browser-based memory game built using **HTML, CSS, and JavaScript
 
 ## 🚀 Live Demo
 
-👉
+👉 https://adnan-codes-118.github.io/Simon-Says-Game/
 
 ---
 
