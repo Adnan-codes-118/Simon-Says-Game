@@ -41,7 +41,7 @@ An interactive browser-based memory game built using **HTML, CSS, and JavaScript
 1. Clone the repository
 
 ```
-git clone https://github.com/Adnan-codes-118/simon-says.git
+git clone https://github.com/Adnan-codes-118/Simon-Says-Game.git
 ```
 
 2. Open `index.html` in your browser
